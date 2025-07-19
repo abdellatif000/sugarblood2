@@ -51,3 +51,13 @@ export const weightHistoryRelations = relations(weightHistory, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+import { cookies } from 'next/headers';
+
+// Define your session cookie name here
+const SESSION_COOKIE_NAME = 'your_session_cookie_name';
+
+const getUserId = async () => {
+  const cookieStore = await cookies();
+  return cookieStore.get(SESSION_COOKIE_NAME)?.value;
+};
