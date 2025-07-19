@@ -19,7 +19,8 @@ export const glucoseLogs = pgTable('glucose_logs', {
   mealType: mealTypeEnum('meal_type').notNull(),
   glycemia: real('glycemia').notNull(), // in g/L
   dosage: real('dosage').notNull(), // Novorapide units
-  Notes: real('Notes').notNull(), // Novorapide units
+  Notes: text('Notes').notNull(), // Notes about the log
+  
 
 });
 
