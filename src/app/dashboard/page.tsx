@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useMemo } from 'react';
@@ -33,6 +32,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
 import { calculateBMI } from '@/lib/utils';
 import type { MealType } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
@@ -44,6 +44,7 @@ const glucoseLogSchema = z.object({
   dosage: z.coerce.number().min(0, 'Dosage must be 0 or more.'),
   mealType: z.enum(['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting', 'NoMeal']),
   weight: z.coerce.number().positive("Weight must be a positive number.").optional().or(z.literal('')),
+  notes: z.string().nullable().optional(),
 });
 
 export default function DashboardPage() {
@@ -58,6 +59,7 @@ export default function DashboardPage() {
       dosage: 0,
       mealType: 'Fasting',
       weight: '',
+      notes: '',
     },
   });
   
@@ -85,6 +87,7 @@ export default function DashboardPage() {
           glycemia: values.glycemia,
           dosage: values.dosage,
           mealType: values.mealType as MealType,
+          notes: values.notes || null,
         });
 
         if (values.weight && typeof values.weight === 'number' && values.weight > 0) {
@@ -100,7 +103,8 @@ export default function DashboardPage() {
           glycemia: 1.0,
           dosage: 0,
           mealType: 'Fasting',
-          weight: ''
+          weight: '',
+          notes: '',
         });
     } catch (error: any) {
         toast({
@@ -248,6 +252,21 @@ export default function DashboardPage() {
                         <FormLabel>Weight (kg)</FormLabel>
                         <FormControl>
                           <Input type="number" step="0.1" placeholder="Optional" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="grid grid-cols-1 gap-4 mt-4">
+                  <FormField
+                    control={form.control}
+                    name="notes"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Notes</FormLabel>
+                        <FormControl>
+                          <Textarea placeholder="Add any notes here" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
