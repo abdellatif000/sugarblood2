@@ -42,7 +42,7 @@ import Link from 'next/link';
 const glucoseLogSchema = z.object({
   glycemia: z.coerce.number().min(0.1, 'Glycemia is required.'),
   dosage: z.coerce.number().min(0, 'Dosage must be 0 or more.'),
-  mealType: z.enum(['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting', 'NoMeal']),
+  mealType: z.enum(['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting', 'No']),
   weight: z.coerce.number().positive("Weight must be a positive number.").optional().or(z.literal('')),
   notes: z.string().nullable().optional(),
 });

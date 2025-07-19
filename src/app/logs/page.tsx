@@ -268,7 +268,7 @@ export default function LogsPage() {
                         <SelectItem value="Dinner">Dinner</SelectItem>
                         <SelectItem value="Snack">Snack</SelectItem>
                         <SelectItem value="Fasting">Fasting</SelectItem>
-                        <SelectItem value="NoMeal">NoMeal</SelectItem>
+                        <SelectItem value="No">No</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
