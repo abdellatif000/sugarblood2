@@ -1,5 +1,5 @@
 
-export type MealType = 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack' | 'Fasting';
+export type MealType = 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack' | 'Fasting' | 'NoMeal';
 
 export interface GlucoseLog {
   id: string;
