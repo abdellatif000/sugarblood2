@@ -1,7 +1,7 @@
 import { pgTable, text, timestamp, real, pgEnum, primaryKey, varchar } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-export const mealTypeEnum = pgEnum('meal_type', ['NoMeal','Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting']);
+export const mealTypeEnum = pgEnum('meal_type', ['No','Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting']);
 
 export const users = pgTable('users', {
   id: text('id').notNull().primaryKey(),
