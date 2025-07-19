@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -28,7 +27,7 @@ const glucoseLogSchema = z.object({
   timestamp: z.string().optional(),
   glycemia: z.coerce.number().min(0.1, 'Glycemia is required.'),
   dosage: z.coerce.number().min(0, 'Dosage must be 0 or more.'),
-  mealType: z.enum(['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting','NoMeal']),
+  mealType: z.enum(['NoMeal','Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting']),
 });
 
 type FormData = z.infer<typeof glucoseLogSchema>;
@@ -269,6 +268,7 @@ export default function LogsPage() {
                         <SelectItem value="Dinner">Dinner</SelectItem>
                         <SelectItem value="Snack">Snack</SelectItem>
                         <SelectItem value="Fasting">Fasting</SelectItem>
+                        <SelectItem value="NoMeal">No Meal</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
