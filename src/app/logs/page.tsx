@@ -27,7 +27,7 @@ const glucoseLogSchema = z.object({
   timestamp: z.string().optional(),
   glycemia: z.coerce.number().min(0.1, 'Glycemia is required.'),
   dosage: z.coerce.number().min(0, 'Dosage must be 0 or more.'),
-  mealType: z.enum(['NoMeal','Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting']),
+  mealType: z.enum(['No','Breakfast', 'Lunch', 'Dinner', 'Snack', 'Fasting']),
 });
 
 type FormData = z.infer<typeof glucoseLogSchema>;
